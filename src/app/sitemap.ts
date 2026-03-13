@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/lib/data/services";
+import { groupCompanies } from "@/lib/data/company";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.fervian.es";
@@ -50,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...servicePages];
+  const companyPages: MetadataRoute.Sitemap = groupCompanies.map((company) => ({
+    url: `${baseUrl}/grupo/${company.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...servicePages, ...companyPages];
 }

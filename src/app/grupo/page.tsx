@@ -106,8 +106,8 @@ export default function GrupoPage() {
                     <p className="text-slate-600 leading-relaxed mb-6">
                       {gc.description}
                     </p>
-                    <div className="grid sm:grid-cols-2 gap-2">
-                      {gc.services.map((service) => (
+                    <div className="grid sm:grid-cols-2 gap-2 mb-6">
+                      {gc.services.slice(0, 5).map((service) => (
                         <div
                           key={service}
                           className="flex items-center gap-2 text-sm text-slate-700"
@@ -117,6 +117,13 @@ export default function GrupoPage() {
                         </div>
                       ))}
                     </div>
+                    <Link
+                      href={`/grupo/${gc.slug}/`}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-accent-600 hover:text-accent-700 transition-colors"
+                    >
+                      Ver más sobre {gc.name}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
               </div>
