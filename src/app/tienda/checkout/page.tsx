@@ -156,9 +156,7 @@ export default function CheckoutPage() {
                 { id: "success", label: "3. Confirmación" },
               ].map((s, idx) => {
                 const active = s.id === step;
-                const done =
-                  (step === "payment" && s.id === "cart") ||
-                  step === "success";
+                const done = step === "payment" && s.id === "cart";
                 return (
                   <div key={s.id} className="flex items-center gap-2">
                     <span
