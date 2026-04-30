@@ -14,6 +14,7 @@ import {
   Building2,
 } from "lucide-react";
 import { company } from "@/lib/data/company";
+import { stockImages } from "@/lib/stock-images";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -101,8 +102,13 @@ export default function EmpresaPage() {
             </div>
 
             <div className="relative">
-              <div className="bg-primary-100 rounded-3xl aspect-[4/3] flex items-center justify-center">
-                <Building2 className="w-20 h-20 text-primary-200" />
+              <div className="bg-primary-100 rounded-3xl aspect-[4/3] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={stockImages.team}
+                  alt="Equipo Fervian sobre el terreno"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

@@ -22,6 +22,7 @@ import {
 import { company } from "@/lib/data/company";
 import { services } from "@/lib/data/services";
 import { projects } from "@/lib/data/projects";
+import { stockImages } from "@/lib/stock-images";
 
 const iconMap: Record<string, React.ReactNode> = {
   Route: <Route className="w-7 h-7" />,
@@ -39,7 +40,14 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative hero-gradient min-h-[600px] lg:min-h-[700px] flex items-center">
+      <section className="relative hero-gradient min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={stockImages.hero}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+        />
         <div className="hero-overlay absolute inset-0" />
         <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
@@ -190,11 +198,13 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="relative">
-              <div className="bg-primary-100 rounded-3xl aspect-[4/3] flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Award className="w-16 h-16 text-primary-300 mx-auto mb-4" />
-                  <p className="text-primary-400 text-sm">Imagen de obras / maquinaria</p>
-                </div>
+              <div className="bg-primary-100 rounded-3xl aspect-[4/3] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={stockImages.team}
+                  alt="Equipo Fervian en obra"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-accent-500 text-white rounded-2xl p-6 shadow-xl">
                 <div className="font-heading text-3xl font-bold">+20</div>
@@ -223,8 +233,13 @@ export default function HomePage() {
                 key={project.slug}
                 className="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover"
               >
-                <div className="bg-primary-50 h-48 flex items-center justify-center">
-                  <Building className="w-12 h-12 text-primary-200" />
+                <div className="bg-primary-50 h-48 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={stockImages.projects[project.slug] || stockImages.hero}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">

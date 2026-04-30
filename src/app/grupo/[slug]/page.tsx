@@ -13,6 +13,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { groupCompanies, getCompanyBySlug } from "@/lib/data/company";
+import { stockImages } from "@/lib/stock-images";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -67,8 +68,16 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
       />
 
       {/* Header */}
-      <section className="hero-gradient py-20 lg:py-28">
-        <div className="container-custom px-4 sm:px-6 lg:px-8">
+      <section className="relative hero-gradient py-20 lg:py-28 overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={stockImages.group[company.slug] || stockImages.hero}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        />
+        <div className="hero-overlay absolute inset-0" />
+        <div className="container-custom px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-3xl">
             <nav className="flex items-center gap-2 text-sm text-slate-400 mb-6">
               <Link href="/" className="hover:text-white transition-colors">

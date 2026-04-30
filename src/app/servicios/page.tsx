@@ -14,6 +14,7 @@ import {
   Phone,
 } from "lucide-react";
 import { services } from "@/lib/data/services";
+import { stockImages } from "@/lib/stock-images";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -75,17 +76,24 @@ export default function ServiciosPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
+            {services.map((service) => (
               <Link
                 key={service.slug}
                 href={`/servicios/${service.slug}/`}
-                className="group bg-white rounded-2xl border border-slate-200 p-8 card-hover relative overflow-hidden"
+                className="group bg-white rounded-2xl border border-slate-200 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary-100 transition-colors" />
-                <div className="relative">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-50 text-primary-600 rounded-2xl mb-5 group-hover:bg-primary-600 group-hover:text-white transition-colors">
-                    {iconMap[service.icon] || <Building className="w-8 h-8" />}
+                <div className="relative h-48 overflow-hidden bg-primary-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={stockImages.services[service.slug] || stockImages.hero}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 bg-white/95 backdrop-blur-sm text-primary-600 rounded-xl shadow-sm">
+                    {iconMap[service.icon] || <Building className="w-6 h-6" />}
                   </div>
+                </div>
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
                   <h2 className="font-heading text-xl font-semibold text-primary-800 mb-3 group-hover:text-primary-600 transition-colors">
                     {service.title}
                   </h2>
@@ -100,7 +108,7 @@ export default function ServiciosPage() {
                       </li>
                     ))}
                   </ul>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-600 group-hover:gap-2 transition-all">
+                  <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-accent-600 group-hover:gap-2 transition-all">
                     Ver detalles
                     <ArrowRight className="w-4 h-4" />
                   </span>

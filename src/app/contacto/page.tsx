@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { company } from "@/lib/data/company";
+import { stockImages } from "@/lib/stock-images";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -302,14 +303,23 @@ export default function ContactoPage() {
       </section>
 
       {/* Map placeholder */}
-      <section className="bg-slate-100 h-96 flex items-center justify-center">
-        <div className="text-center">
-          <MapPin className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-          <p className="text-slate-400">
-            Mapa de ubicación — Av. Hernán Cortés, 9 — Cáceres
+      <section className="relative bg-slate-900 h-96 flex items-center justify-center overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={stockImages.map}
+          alt="Vista aérea de Cáceres"
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+        <div className="relative text-center text-white px-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-accent-500 rounded-2xl mb-3 shadow-lg">
+            <MapPin className="w-7 h-7" />
+          </div>
+          <p className="font-heading text-lg font-semibold">
+            Av. Hernán Cortés, 9 — 10004 Cáceres
           </p>
-          <p className="text-xs text-slate-400 mt-1">
-            (Integrar Google Maps iframe aquí)
+          <p className="text-sm text-slate-300 mt-1">
+            (Integrar Google Maps embed cuando esté disponible)
           </p>
         </div>
       </section>

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building, MapPin, Calendar, Users, Banknote, ArrowRight, Phone } from "lucide-react";
+import { MapPin, Calendar, Users, Banknote, Phone } from "lucide-react";
 import { projects } from "@/lib/data/projects";
+import { stockImages } from "@/lib/stock-images";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -56,8 +57,13 @@ export default function ProyectosPage() {
                 key={project.slug}
                 className="bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover"
               >
-                <div className="bg-gradient-to-br from-primary-50 to-primary-100 h-52 flex items-center justify-center relative">
-                  <Building className="w-16 h-16 text-primary-200" />
+                <div className="bg-gradient-to-br from-primary-50 to-primary-100 h-52 relative overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={stockImages.projects[project.slug] || stockImages.hero}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute top-4 left-4">
                     <span className="text-xs font-semibold bg-accent-500 text-white px-3 py-1.5 rounded-full shadow-sm">
                       {project.category}

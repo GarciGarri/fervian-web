@@ -133,6 +133,28 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Funding banner — Kit Digital / NextGenerationEU */}
+      <div className="border-t border-primary-800 bg-white">
+        <div className="container-custom px-4 sm:px-6 lg:px-8 py-6">
+          <div className="text-center mb-4">
+            <p className="text-sm font-semibold text-slate-700">
+              Fervian Vías y Áridos S.L.
+              <span className="text-slate-400 mx-2">·</span>
+              <span className="font-mono text-slate-500">B10025856</span>
+            </p>
+          </div>
+          <div className="flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/footer-banner.webp"
+              alt="Financiado por la Unión Europea — NextGenerationEU · Kit Digital · Gobierno de España · Red.es"
+              className="max-w-full h-auto max-h-20 sm:max-h-24"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Bottom bar */}
       <div className="border-t border-primary-800">
         <div className="container-custom flex flex-col sm:flex-row justify-between items-center py-5 px-4 sm:px-6 lg:px-8 gap-3">

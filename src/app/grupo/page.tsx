@@ -10,6 +10,7 @@ import {
   Phone,
 } from "lucide-react";
 import { groupCompanies } from "@/lib/data/company";
+import { stockImages } from "@/lib/stock-images";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -84,11 +85,18 @@ export default function GrupoPage() {
                 }`}
               >
                 <div className="grid lg:grid-cols-5 gap-0">
-                  {/* Image placeholder */}
+                  {/* Image */}
                   <div
-                    className={`lg:col-span-2 ${gc.color} flex items-center justify-center p-12 min-h-[250px]`}
+                    className={`lg:col-span-2 ${gc.color} relative min-h-[250px] overflow-hidden`}
                   >
-                    <div className="text-white/80">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={stockImages.group[gc.slug] || stockImages.hero}
+                      alt={gc.name}
+                      className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-80"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-transparent" />
+                    <div className="absolute top-6 left-6 inline-flex items-center justify-center w-14 h-14 bg-white/95 backdrop-blur-sm text-primary-700 rounded-2xl shadow-lg">
                       {companyIcons[gc.icon]}
                     </div>
                   </div>
